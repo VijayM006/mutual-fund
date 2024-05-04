@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Finance Management</h1>
+<hr>
+<div style="justify-content: right; text-align: right;">
+    <a href="{{ url_for('add_form') }}" class="btn btn-success">Add user</a>
+</div>
+<div style="justify-content: right; text-align: right;">
+    <a href="{{ url_for('logout') }}" class="btn btn-success">Logout</a>
+</div>
+<table class="table table-border">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Fund Name</th>
+            <th>Invested Amount</th>
+            <th>Units Held</th>
+            <th>Nav</th>
+            <th>Current Value</th>
+            <th>Growth</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in datas %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.Name }}</td>
+            <td>{{ item.fund_name}}</td>
+            <td>{{ item.invested_amount }}</td>
+            <td>{{ item.units_held }}</td>
+            <td>{{ item.nav }}</td>
+            <td>{{ item.current_value }}</td>
+            <td>{{ item.growth }}</td>
+            <td><a href="{{url_for('edit_form', id=item.id)}}">Edit</a></td>
+            <td><a href="{{url_for('delete', id=item.id)}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+<!-- class="btn btn-primary" -->
+<!-- class="btn btn-danger" -->
